@@ -79,13 +79,12 @@ class UserController extends Controller
         public function destroy(Request $request)
     {
         $slider=User::where('id', '=', $request->id)->first();
- if($slider!=null){
+
+
 
     $slider->delete();
     return 1;
- }else{
-     return 0;
- }
+
 // Lo eliminamos de la base de datos
 
 

@@ -2458,8 +2458,9 @@ __webpack_require__.r(__webpack_exports__);
           axios.post('admin/usuario/deletedUser', {
             'id': idi
           }).then(function (response) {
+            console.log("borrar");
             console.log(response.data);
-            swal.fire('Borrado!', 'Tu slider ha sido borrado.', 'success');
+            swal.fire('Borrado!', 'Tu Usuario ha sido borrado.', 'success');
             me.listarSlider(1, '');
           })["catch"](function (error) {
             console.log(error);
@@ -2499,9 +2500,6 @@ __webpack_require__.r(__webpack_exports__);
           if (response.data == -1) {
             swal.fire('Algun error', '', 'error');
           } else {
-            this.nombre = '';
-            this.email = '';
-            this.password = '';
             swal.fire('Usuario registrado', '', 'success');
             me.listarSlider(1, '');
             me.cerrarModal();
@@ -2523,11 +2521,7 @@ __webpack_require__.r(__webpack_exports__);
           'id': this.id,
           'password': this.password
         }).then(function (response) {
-          console.log(response.data);
           swal.fire('Usuario Actualizado', '', 'success');
-          this.nombre = '';
-          this.email = '';
-          this.password = '';
           me.listarSlider(1, '');
           me.cerrarModal();
         })["catch"](function (error) {
@@ -2546,8 +2540,8 @@ __webpack_require__.r(__webpack_exports__);
                 {
                   this.modal = 1;
                   this.tituloModal = 'Registrar Usuario';
-                  this.titulo = '';
-                  this.url = '';
+                  this.nombre = '';
+                  this.email = '';
                   this.boton = 1;
                   break;
                 }
