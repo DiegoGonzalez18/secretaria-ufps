@@ -22,7 +22,7 @@ class SliderController extends Controller
         if($buscar==''){
             $sliders=Slider::orderBy('id','desc')->paginate(3);
         }else{
-            $sliders=Slider::where('titulo','like','%'.$buscar.'%')->orderBy('id','desc')->paginate(3);;
+            $sliders=Slider::where('titulo','like','%'.$buscar.'%')->orderBy('id','desc')->paginate(3);
         }
         return [
             'pagination'=> [
@@ -203,5 +203,12 @@ $extension="jpg";
 
 
 
+    }
+    public function slider(){
+       $sliders=  Slider::where('visibilidad', '=', 1)->paginate(4);
+       return [
+        'pagination'=> 1,
+        'sliders'=>$sliders
+    ];
     }
 }

@@ -17,6 +17,8 @@ Route::get('/', function () {
 Route::group(['middleware'=>['guest']],function(){
     Route::get('/login','Auth\LoginController@showLoginForm');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
+    Route::get('slider','SliderController@slider');
+    Route::get('slider2','SliderController@slider');
 });
 
 

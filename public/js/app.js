@@ -2601,11 +2601,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {}
+  data: function data() {
+    return {
+      slider: []
+    };
+  },
+  methods: {
+    listarSlider: function listarSlider() {
+      var me = this;
+      axios.get("slider").then(function (response) {
+        var respuesta = response.data;
+        me.slider = respuesta.sliders.data; //
+
+        console.log(me.slider);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.listarSlider();
+  },
+  created: function created() {}
 });
 
 /***/ }),
@@ -42705,92 +42723,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "pgwSlider" }, [
-      _c("li", [
-        _c("a", { attrs: { href: "#" } }, [
-          _c("img", {
-            attrs: { src: "img/28e89a8d6a0ec5d1905e596ca2a28898.png" }
-          }),
-          _c(
-            "span",
-            {
-              staticStyle: { "font-family": "inherit", "font-weight": "bold" }
-            },
-            [
-              _vm._v(
-                "Diego, Alcaldía y Diócesis de Tibú articularán iniciativas para el desarrollo del Catatumbo"
-              )
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c("a", { attrs: { href: "#" } }, [
-          _c("img", {
-            attrs: { src: "img/00734e46e47cd9dfcf70b99c4b91bc58.png" }
-          }),
-          _c(
-            "span",
-            {
-              staticStyle: { "font-family": "inherit", "font-weight": "bold" }
-            },
-            [
-              _vm._v(
-                "Innovación, creatividad e investigación la propuesta de la UFPS en el Seminario Internacional de Arquitectura"
-              )
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c("a", { attrs: { href: "#" } }, [
-          _c("img", {
-            attrs: { src: "img/6d6fe00fd4cb104a238e5020b3317596.png" }
-          }),
-          _c(
-            "span",
-            {
-              staticStyle: { "font-family": "inherit", "font-weight": "bold" }
-            },
-            [
-              _vm._v(
-                "Plantón por La Paz, muestra del compromiso de la UFPS por la construcción de una nueva Colombia"
-              )
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c("a", { attrs: { href: "#" } }, [
+  return _c(
+    "ul",
+    { staticClass: "pgwSlider" },
+    _vm._l(_vm.slider, function(item) {
+      return _c("li", { key: item.id }, [
+        _c("a", { attrs: { href: "s-artisticas" } }, [
           _c("img", {
             attrs: { src: "img/2246d36031da923ba74a3ff8a6daef86.png" }
           }),
+          _vm._v(" "),
           _c(
             "span",
             {
               staticStyle: { "font-family": "inherit", "font-weight": "bold" }
             },
-            [
-              _vm._v(
-                "Festival UFPS Territorio de Paz, escenario de pedagogía, análisis, reflexión, y muestras artísticas"
-              )
-            ]
+            [_vm._v(_vm._s(item.titulo))]
           )
         ])
       ])
-    ])
-  }
-]
+    }),
+    0
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
