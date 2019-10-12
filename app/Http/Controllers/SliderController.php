@@ -206,9 +206,6 @@ $extension="jpg";
     }
     public function slider(){
        $sliders=  Slider::where('visibilidad', '=', 1)->paginate(4);
-       return [
-        'pagination'=> 1,
-        'sliders'=>$sliders
-    ];
+       return $sliders->toArray();
     }
 }

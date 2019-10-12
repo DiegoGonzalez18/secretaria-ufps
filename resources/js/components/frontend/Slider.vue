@@ -1,22 +1,45 @@
-<template>
 
-   <ul class="pgwSlider" >
-      <li  v-for="item in slider" v-bind:key="item.id">
-          <a href="s-artisticas">
-              <img src="img/2246d36031da923ba74a3ff8a6daef86.png">
-              <span style="font-family: inherit; font-weight: bold;">{{item.titulo}}</span></a>
+    <template >
+
+    <ul class="pgwSlider"  v-if="hola" >
+
+            <li v-for="item in slider " :key="item.id"><a href="#"><img :src="item.url"><span style="font-family: inherit; font-weight: bold;" v-text="item.titulo"></span></a>
         </li>
+        </ul>
 
 
-</ul>
+        </template>
 
-</template>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
-    export default {
+const axios= require('axios');
+const p = require('jquery')
+const a= require('popper.js')
+
+$(document).ready(function() {
+    $('.pgwSlider').pgwSlider();
+});
+export default {
+    mounted() {
+this.listarSlider();
+
+    },
       data(){
            return{
-               slider:[]
+               slider:[],
+               hola:false
                }
            }
        ,
@@ -27,11 +50,14 @@
             let me= this;
                axios.get("slider")
                 .then(function (response) {
-                    var respuesta= response.data;
-                     me.slider= respuesta.sliders.data;
-    //
-                console.log(me.slider)
 
+                    var respuesta= response.data.sliders.data;
+  me.slider= respuesta;
+  me.hola=true;
+
+    //
+                console.log(respuesta)
+                        console.log(me.slider.length)
                  })
                 .catch(function (error) {
 

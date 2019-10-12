@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+
 
 window.Vue = require('vue');
 // ES6 Modules or TypeScript
@@ -39,7 +39,11 @@ Vue.component('slider', require('./components/frontend/Slider.vue').default);
 const app = new Vue({
     el: '#app',
     data:{
+
         menu:0,
 
+    },
+    components: {
+  nombre:'slider'
     }
 });
