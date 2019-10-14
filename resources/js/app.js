@@ -28,7 +28,7 @@ Vue.component('slider-component', require('./components/Slider.vue').default);
 Vue.component('user', require('./components/User.vue').default);
 
 //frontend
-Vue.component('slider', require('./components/frontend/Slider.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
